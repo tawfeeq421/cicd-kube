@@ -3,7 +3,7 @@ pipeline {
     agent any
 /*
 	tools {
-        maven "MAVEN3"
+        maven "maven3"
     }
 */
     environment {
@@ -77,7 +77,7 @@ pipeline {
         stage('CODE ANALYSIS with SONARQUBE') {
 
             environment {
-                scannerHome = tool 'sonarscanner4'
+                scannerHome = tool 'mysonarscanner4'
             }
 
             steps {
