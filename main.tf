@@ -11,7 +11,7 @@ resource "aws_instance" "web" {
     volume_size = 10
   }
 }
-resource "aws_instance" "web" {
+resource "aws_instance" "web1" {
   ami                    = "ami-0c7217cdde317cfec"   
   instance_type          = "t2.medium"
   key_name               = "dev"
