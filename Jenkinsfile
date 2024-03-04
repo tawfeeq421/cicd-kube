@@ -97,10 +97,14 @@ pipeline {
                 }
             }
         }
-        stage('Kubernetes Deploy') {
-	  agent { label 'EKS' }
-            steps {
-                    sh "helm upgrade --install --force vproifle-stack helm/vprofilecharts --set appimage=${registry}:${BUILD_NUMBER} --namespace prod"
+        stage('Deploy to kubernets'){
+            steps{
+                script{
+                    withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
+                       sh 'cd helm/vprofilecharts/templates'
+                       sh 'kubectl apply -f .'
+                  }
+                }
             }
         }
     }
