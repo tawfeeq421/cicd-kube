@@ -103,6 +103,15 @@ pipeline {
                     withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'k8s', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                        sh 'cd helm/vprofilecharts/templates'
                        sh 'kubectl apply -f app-secret.yml'
+		       sh 'kubectl apply -f mc-CIP.yml'
+		       sh 'kubectl apply -f rmq-CIP-service.yml'
+		       sh 'kubectl apply -f vproapp-service.yml'
+		       sh 'kubectl apply -f vprodbdep.yml'
+		       sh 'kubectl apply -f db-CIP.yml'
+		       sh 'kubectl apply -f mcdep.ymll'
+		       sh 'kubectl apply -f rmq-dep.yml'
+		       sh 'kubectl apply -f vproappdep.yml'
+
                   }
                 }
             }
